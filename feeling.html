@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ความรู้สึกส่วนตัว - ห้อง 3/4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="honor-page">
+    
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="honor-container" style="text-align: center; padding-top: 100px;">
+        <h1 class="main-title">ความรู้สึกส่วนตัวของผม</h1>
+        <div class="gold-line"></div>
+
+        <div class="feeling-box">
+            <p>"ตลอด 3 ปีที่ผ่านมา สำหรับผมแล้ว ห้อง 3/4 ไม่ใช่แค่ห้องเรียน แต่มันคือครอบครัวที่ผมโตมาด้วยกัน ผมอยากขอบคุณเพื่อนทุกคนที่ร่วมหัวเราะและร้องไห้มากับผม ขอบคุณความทรงจำดีๆ ที่ทำให้ชีวิตมัธยมของผมมีความหมาย แม้ถึงวันที่ต้องแยกย้ายไปตามทางของตัวเอง แต่ผมจะเก็บมิตรภาพของทุกคนไว้ในใจเสมอ รักทุกคนนะ 3/4 รูปภาพรวมถึงชื่อของเพื่อนๆ ทุกคน จะถูกเก็บรักษาและคงอยู่ในเว็บไซต์แห่งนี้ไปตลอดกาลนาน"</p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="index.html" class="back-btn">กลับไปหน้าแรก</a>
+        </div>
+    </div>
+
+    <script>
+        // ให้เพลงเริ่มเล่นทันทีเมื่อเข้าหน้านี้
+        window.onload = function() {
+            var audio = document.getElementById("bgMusic");
+            audio.play().catch(function(error) {
+                // หากถูกบล็อก ให้เริ่มเล่นเมื่อมีการคลิกที่หน้าจอ
+                document.body.addEventListener('click', function() {
+                    audio.play();
+                }, { once: true });
+            });
+        }
+    </script>
+</body>
+</html>

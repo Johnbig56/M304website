@@ -1,0 +1,469 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #0b0b0b; /* พื้นหลังดำเข้ม */
+    overflow: hidden;
+    position: relative;
+}
+
+/* สร้างแสงสีแดงนวลๆ กระจายอยู่ด้านหลังแบบไม่กวนสายตา */
+body::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(50px);
+    z-index: -1;
+}
+
+.content-box {
+    background: rgba(15, 15, 15, 0.9);
+    padding: 60px;
+    border-radius: 30px;
+    border: 2px solid #ff0000; /* ขอบเส้นสีแดงชัดเจน */
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    animation: fadeIn 1.5s ease;
+}
+
+h2 {
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.glow-text {
+    color: #ff0000;
+    font-size: 4.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* เพิ่มขอบขาวบางๆ และเงาดำเพื่อให้ตัวหนังสือลอยเด่นขึ้นมา */
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    text-shadow: 3px 3px 0px #000, 0 0 15px rgba(255, 0, 0, 0.6);
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #cccccc;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+}
+
+.btn-main {
+    width: 220px;
+    height: 60px;
+    background: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.btn-main:hover {
+    background: #ffffff;
+    color: #ff0000;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 0, 0, 0.5);
+}
+
+.footer-text {
+    margin-top: 50px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.footer-text span {
+    color: #ff0000;
+    font-weight: 500;
+}
+
+/* Animation ให้หน้าเว็บค่อยๆ ปรากฏขึ้น */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* การตั้งค่าพื้นฐาน */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+/* พื้นหลังไล่เฉดสีดำแดง ดูมีพลังและให้เกียรติ */
+body.honor-page {
+    background: radial-gradient(circle at center, #3a0000 0%, #0b0b0b 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-y: auto; /* ทำให้เลื่อนหน้าจอลงได้ */
+    overflow-x: hidden;
+}
+
+.honor-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* ส่วนหัวข้อ */
+.honor-header {
+    margin-bottom: 80px;
+}
+
+.main-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: #d4af37; /* สีทอง */
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.gold-line {
+    width: 250px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 15px auto;
+}
+
+.honor-desc {
+    font-style: italic;
+    color: #cccccc;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* การจัดวาง Grid สำหรับเพื่อน 38 คน */
+.honor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 20px;
+}
+
+/* การตั้งค่า Card สมาชิกแต่ละคน */
+.honor-card {
+    position: relative; /* สำคัญ: เพื่อให้เลขที่อ้างอิงตำแหน่งมุมบนซ้ายได้ */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    padding: 40px 20px 30px 20px;
+    transition: all 0.5s ease;
+    backdrop-filter: blur(5px);
+    
+    /* เอฟเฟกต์โผล่ขึ้นมาตอนโหลด */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.honor-card:hover {
+    transform: translateY(-15px);
+    background: rgba(212, 175, 55, 0.05);
+    border-color: #d4af37;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* เลขที่มุมซ้ายบน */
+.member-number {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #d4af37;
+    opacity: 0.8;
+}
+
+/* กรอบรูปภาพวงกลม */
+.img-frame {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    border: 4px solid #d4af37;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.honor-card:hover .img-frame img {
+    transform: scale(1.1);
+}
+
+/* ชื่อจริง */
+.full-name {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/* ชื่อเล่น */
+.nick-name {
+    font-size: 1.1rem;
+    color: #d4af37;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+/* คำประจำใจ */
+.motto {
+    font-size: 0.95rem;
+    color: #bbbbbb;
+    font-style: italic;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding-top: 15px;
+    line-height: 1.5;
+}
+
+/* ปุ่มกลับและส่วนท้าย */
+.honor-footer {
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 15px 45px;
+    background: transparent;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: 0.4s;
+}
+
+.btn-back:hover {
+    background: #d4af37;
+    color: #000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.creator {
+    margin-top: 40px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.creator span {
+    color: #d4af37;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ส่วนรูปรวม 3 ปี */
+.yearly-memories {
+    margin-top: 100px;
+    padding: 40px 0;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.memory-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.memory-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* ส่วนประโยคปิดท้าย */
+.ending-quote {
+    margin-top: 80px;
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, transparent, rgba(74, 0, 0, 0.5));
+}
+
+.ending-quote p {
+    font-size: 1.3rem;
+    color: #ccc;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.final-text {
+    font-size: 2.5rem;
+    color: #d4af37;
+    margin-top: 30px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
+    to { text-shadow: 0 0 30px rgba(212, 175, 55, 1); }
+}
+
+.teachers-section {
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.teacher-year {
+    margin-bottom: 50px;
+}
+
+.teacher-year h3 {
+    color: #d4af37;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.teacher-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.teacher-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    width: 250px;
+}
+
+.teacher-img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #d4af37;
+}
+
+.teacher-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.teacher-name {
+    font-weight: 500;
+    color: #fff;
+}
+
+.next-page-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #fff59d; /* สีเหลืองนวลตามรูป */
+    color: #333 !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 0 20px rgba(255, 245, 157, 0.5); /* เอฟเฟกต์เรืองแสง */
+    transition: all 0.3s ease;
+}
+
+.next-page-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 245, 157, 0.8);
+    background: #fff;
+}
+
+/* --- สไตล์หน้าความรู้สึกส่วนตัว (Feeling Page) --- */
+
+/* กล่องบรรจุเนื้อหาหลัก */
+.feeling-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* กล่องข้อความความในใจ */
+.feeling-box {
+    background: rgba(255, 255, 255, 0.07); /* โปร่งแสงเล็กน้อย */
+    border: 1.5px solid #d4af37; /* ขอบสีทอง */
+    padding: 50px 40px;
+    border-radius: 25px;
+    color: #ffffff;
+    max-width: 800px;
+    line-height: 2.2; /* เว้นบรรทัดให้อ่านง่าย */
+    font-size: 1.25rem;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); /* เงาสีทองจางๆ */
+    margin: 30px auto;
+    backdrop-filter: blur(10px); /* เอฟเฟกต์กระจกฝ้า */
+}
+
+/* ปรับแต่งเน้นข้อความในกล่อง */
+.feeling-box p {
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ปุ่มกลับหน้าแรก (อ้างอิงจากปุ่มเข้าชมที่เคยทำ) */
+.back-btn {
+    display: inline-block;
+    padding: 15px 45px;
+    background: #fff59d; /* สีเหลืองนวลตามปุ่มเดิม */
+    color: #000 !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 0 15px rgba(255, 245, 157, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+    background: #ffffff;
+    box-shadow: 0 0 25px rgba(255, 245, 157, 0.7);
+}
+
+/* หัวใจลอย (z-index สูงเพื่อให้เห็นชัด) */
+.heart-box {
+    z-index: 9999;
+}
